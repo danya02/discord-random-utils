@@ -8,3 +8,14 @@ services:
     ports:
      - target: 8000
        published: 5643
+    depends_on:
+     - redis_currency
+
+  redis_currency:
+    image: redis:alpine3.13
+
+  update_currency:
+    build: ./currency
+    restart: unless-stopped
+    depends_on: 
+     - redis_currency

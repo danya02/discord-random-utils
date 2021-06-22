@@ -17,7 +17,10 @@ def ping(ctx):
 
 discord.set_route("/interactions")
 
-if os.getenv("TESTING_MODE") == 1:
+from currency import init as init_currency
+init_currency(discord)
+
+if os.getenv("TESTING_MODE") == "1":
     discord.update_slash_commands(guild_id=os.environ["TESTING_GUILD"])
 else:
     discord.update_slash_commands()
