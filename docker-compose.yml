@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  webhook:
+    build: .
+    restart: unless-stopped
+    env_file:
+     - CONFIG.env
+    ports:
+     - target: 8000
+       published: 5643
